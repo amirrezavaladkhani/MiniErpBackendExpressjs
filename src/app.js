@@ -11,9 +11,9 @@ app.use(morgan('dev'))
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.json({
-        message: 'Mini ERP API'
-    })
+   res.json({
+      message: 'Mini ERP API'
+   })
 })
 
 module.exports = app
