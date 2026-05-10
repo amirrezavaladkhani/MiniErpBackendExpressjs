@@ -1,23 +1,18 @@
-const express = require('express')
-const cors = require('cors')
-const helmet = require('helmet')
-const morgan = require('morgan')
+import express from 'express'
+import cors from 'cors'
+import helmet from 'helmet'
+import morgan from 'morgan'
 
 const app = express()
 
 app.use(cors())
 app.use(helmet())
 app.use(morgan('dev'))
+
+import routes from './routes/index.js'
+
 app.use(express.json())
 
-// const userRoutes = require('./routes/user.routes')
+app.use('/api', routes)
 
-// app.use('/api/users', userRoutes)
-
-app.get('/', (req, res) => {
-   res.json({
-      message: 'Mini ERP API'
-   })
-})
-
-module.exports = app
+export default app
