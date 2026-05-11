@@ -35,12 +35,25 @@ const login = async (req, res) => {
    } catch (error) {
       return res.status(400).json({
          success: false,
-         message: error.message,
+         message: error.message
       })
    }
+}
+
+const me = async (req, res) => {
+   return res.status(200).json({
+      success: true,
+      data: {
+         id: req.user.id,
+         firstName: req.user.firstName,
+         lastName: req.user.lastName,
+         email: req.user.email
+      }
+   })
 }
 
 export default {
    register,
    login,
+   me
 }
