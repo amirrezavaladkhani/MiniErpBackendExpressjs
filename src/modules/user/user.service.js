@@ -2,6 +2,8 @@ import bcrypt from 'bcrypt'
 
 import userRepository from './user.repository.js'
 
+import generateToken from '../../utils/jwt.js'
+
 const register = async (data) => {
    const existingUser = await userRepository.findByEmail(data.email)
 
@@ -24,6 +26,38 @@ const register = async (data) => {
    }
 }
 
+const login = async (data) => {
+   const user = await userRepository.findByEmail(data.email)
+
+   if (!user) {
+      throw new Error('Invalid Credentials')
+   }
+
+   const isPasswordValid = await bcrypt.compare(
+      data.password,
+      user.password
+   )
+
+   if (!isPasswordValid) {
+      throw new Error('Invalid Credentials')
+   }
+
+   const token = generateToken({
+      id: user.id
+   })
+
+   return {
+      token,
+      user: {
+         id: user.id,
+         firstName: user.firstName,
+         lastName: user.lastName,
+         email: user.email
+      }
+   }
+}
+
 export default {
-   register
+   register,
+   login
 }
