@@ -1,6 +1,7 @@
 import { ZodError } from 'zod'
 
-const errorMiddleware = (error, req, res) => {
+const errorMiddleware = (error, req, res, _next) => {
+
    let statusCode = error.statusCode || 500
 
    let message = error.message || 'Internal Server Error'
