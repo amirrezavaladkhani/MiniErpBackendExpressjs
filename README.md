@@ -6,15 +6,15 @@ Modern Modular ERP Backend built with Node.js, Express.js, PostgreSQL, and Prism
 
 ## 🚀 Tech Stack
 
-* Node.js
-* Express.js 5
-* PostgreSQL
-* Prisma ORM
-* Zod Validation
-* JWT Authentication
-* Bcrypt
-* ESLint
-* Prettier
+- Node.js
+- Express.js 5
+- PostgreSQL
+- Prisma ORM
+- Zod Validation
+- JWT Authentication
+- Bcrypt
+- ESLint
+- Prettier
 
 ---
 
@@ -155,28 +155,28 @@ npm run format
 
 ## 📌 Goals Of This Project
 
-* Build a scalable ERP backend architecture
-* Learn modern Node.js backend engineering
-* Practice modular architecture
-* Implement authentication and authorization
-* Improve clean code and project structure skills
-* Create a production-style backend system
+- Build a scalable ERP backend architecture
+- Learn modern Node.js backend engineering
+- Practice modular architecture
+- Implement authentication and authorization
+- Improve clean code and project structure skills
+- Create a production-style backend system
 
 ---
 
 ## 🔥 Planned Features
 
-* User Authentication
-* JWT Authorization
-* Role Based Access Control (RBAC)
-* Products Module
-* Customers Module
-* Invoice Module
-* File Upload System
-* Pagination & Filtering
-* Swagger Documentation
-* Docker Support
-* Unit & Integration Testing
+- User Authentication
+- JWT Authorization
+- Role Based Access Control (RBAC)
+- Products Module
+- Customers Module
+- Invoice Module
+- File Upload System
+- Pagination & Filtering
+- Swagger Documentation
+- Docker Support
+- Unit & Integration Testing
 
 ---
 

@@ -33,10 +33,7 @@ const login = async (data) => {
       throw new Error('Invalid Credentials')
    }
 
-   const isPasswordValid = await bcrypt.compare(
-      data.password,
-      user.password
-   )
+   const isPasswordValid = await bcrypt.compare(data.password, user.password)
 
    if (!isPasswordValid) {
       throw new Error('Invalid Credentials')
