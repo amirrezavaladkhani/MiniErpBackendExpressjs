@@ -3,12 +3,13 @@ import bcrypt from 'bcrypt'
 import userRepository from './user.repository.js'
 
 import generateToken from '../../utils/jwt.js'
+import AppError from '../../utils/appError.js'
 
 const register = async (data) => {
    const existingUser = await userRepository.findByEmail(data.email)
 
    if (existingUser) {
-      throw new Error('Email already exists')
+      throw new AppError('Email already exists', 400)
    }
 
    const hashedPassword = await bcrypt.hash(data.password, 10)
@@ -30,13 +31,13 @@ const login = async (data) => {
    const user = await userRepository.findByEmail(data.email)
 
    if (!user) {
-      throw new Error('Invalid Credentials')
+      throw new AppError('Invalid credentials', 401)
    }
 
    const isPasswordValid = await bcrypt.compare(data.password, user.password)
 
    if (!isPasswordValid) {
-      throw new Error('Invalid Credentials')
+      throw new AppError('Invalid credentials', 401)
    }
 
    const token = generateToken({
