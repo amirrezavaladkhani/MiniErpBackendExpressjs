@@ -1,53 +1,203 @@
-# Mini ERP Backend Express.js
+# Mini ERP Backend - Express.js
 
-Modern Modular ERP Backend built with Node.js, Express.js, PostgreSQL, and Prisma ORM using scalable ESM architecture.
+A modern and scalable ERP backend architecture built with Express.js, Prisma ORM, and PostgreSQL.
+
+This project is being developed as a modular and production-ready backend system with clean architecture principles.
 
 ---
 
-## 🚀 Tech Stack
+# 🚀 Tech Stack
 
 - Node.js
-- Express.js 5
+- Express.js
 - PostgreSQL
 - Prisma ORM
-- Zod Validation
 - JWT Authentication
-- Bcrypt
-- ESLint
-- Prettier
+- Zod Validation
+- ESLint + Prettier
+- ESM Modules
 
 ---
 
-## 📁 Project Structure
+# 📁 Project Structure
 
 ```txt
 src/
-│
 ├── config/
-│
+├── constants/
+├── middlewares/
 ├── modules/
 │   └── user/
 │       ├── user.controller.js
-│       ├── user.service.js
 │       ├── user.repository.js
-│       ├── user.validation.js
-│       └── user.routes.js
-│
-├── middlewares/
+│       ├── user.routes.js
+│       ├── user.schema.js
+│       └── user.service.js
 ├── routes/
 ├── utils/
-│
 ├── app.js
 └── server.js
 ```
 
 ---
 
-## 🏗 Architecture
+# ✨ Features
 
-This project follows a modern modular backend architecture:
+## Authentication System
+
+- User Registration
+- User Login
+- JWT Authentication
+- Protected Routes
+- Current User Endpoint
+
+---
+
+## Authorization (RBAC)
+
+- Role-Based Access Control
+- Authorization Middleware
+- Admin Protected Routes
+
+---
+
+## Validation & Error Handling
+
+- Zod Schema Validation
+- Global Error Middleware
+- Async Handler
+- Centralized Error Responses
+- Custom AppError Class
+
+---
+
+## Security
+
+- Helmet
+- CORS
+- Password Hashing (bcrypt)
+
+---
+
+# 🛠 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/amirrezavaladkhani/MiniErpBackendExpressjs.git
+```
+
+Move into project directory:
+
+```bash
+cd MiniErpBackendExpressjs
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+---
+
+# ⚙️ Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+PORT=3000
+
+DATABASE_URL="postgresql://USERNAME:PASSWORD@localhost:5432/mini_erp"
+
+JWT_SECRET=your_jwt_secret
+```
+
+---
+
+# 🗄 Prisma Setup
+
+Run migrations:
+
+```bash
+npx prisma migrate dev
+```
+
+Generate Prisma Client:
+
+```bash
+npx prisma generate
+```
+
+---
+
+# ▶️ Run Project
+
+Development mode:
+
+```bash
+npm run dev
+```
+
+Production mode:
+
+```bash
+npm start
+```
+
+---
+
+# 🔐 API Endpoints
+
+## Authentication
+
+### Register
+
+```http
+POST /api/users/register
+```
+
+### Login
+
+```http
+POST /api/users/login
+```
+
+### Current User
+
+```http
+GET /api/users/me
+```
+
+Requires Bearer Token.
+
+---
+
+# 📌 Roadmap
+
+- [x] Authentication System
+- [x] Global Error Handling
+- [ ] RBAC Authorization
+- [ ] User Management APIs
+- [ ] Pagination & Filtering
+- [ ] Product Module
+- [ ] Invoice Module
+- [ ] Employee Module
+- [ ] Docker Support
+- [ ] Swagger Documentation
+- [ ] Testing
+
+---
+
+# 🧠 Architecture
+
+This project follows a layered architecture:
 
 ```txt
+Request
+ ↓
+Middleware
+ ↓
 Route
  ↓
 Controller
@@ -63,129 +213,13 @@ PostgreSQL
 
 ---
 
-## ⚙️ Installation
+# 📄 License
 
-### Clone Repository
-
-```bash
-git clone https://github.com/amirrezavaladkhani/MiniErpBackendExpressjs.git
-```
+ISC
 
 ---
 
-### Navigate To Project
+# 👨‍💻 Author
 
-```bash
-cd MiniErpBackendExpressjs
-```
-
----
-
-### Install Dependencies
-
-```bash
-npm install
-```
-
----
-
-## 🔑 Environment Variables
-
-Create a `.env` file in the project root.
-
-Example:
-
-```env
-PORT=3000
-
-NODE_ENV=development
-
-JWT_SECRET=your_secret_key
-
-DATABASE_URL="postgresql://postgres:password@localhost:5432/mini_erp"
-```
-
----
-
-## 🛢 Prisma Setup
-
-### Generate Prisma Client
-
-```bash
-npx prisma generate
-```
-
-### Run Migrations
-
-```bash
-npx prisma migrate dev
-```
-
----
-
-## ▶️ Run Development Server
-
-```bash
-npm run dev
-```
-
----
-
-## 🧹 Code Quality
-
-### ESLint
-
-```bash
-npm run lint
-```
-
-### Fix ESLint Problems
-
-```bash
-npm run lint:fix
-```
-
-### Format Code
-
-```bash
-npm run format
-```
-
----
-
-## 📌 Goals Of This Project
-
-- Build a scalable ERP backend architecture
-- Learn modern Node.js backend engineering
-- Practice modular architecture
-- Implement authentication and authorization
-- Improve clean code and project structure skills
-- Create a production-style backend system
-
----
-
-## 🔥 Planned Features
-
-- User Authentication
-- JWT Authorization
-- Role Based Access Control (RBAC)
-- Products Module
-- Customers Module
-- Invoice Module
-- File Upload System
-- Pagination & Filtering
-- Swagger Documentation
-- Docker Support
-- Unit & Integration Testing
-
----
-
-## 📄 License
-
-ISC License
-
----
-
-## 👨‍💻 Author
-
-Amirreza Valadkhani
+GitHub:
+https://github.com/amirrezavaladkhani
