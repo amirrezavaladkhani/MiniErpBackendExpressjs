@@ -40,10 +40,11 @@ const me = asyncHandler(async (req, res) => {
 })
 
 const index = asyncHandler(async (req, res) => {
+   const data = await userService.getAllUsers(req.query)
    return res.status(200).json({
       success: true,
-
-      message: 'Users fetched successfully'
+      message: 'Users fetched successfully',
+      data
    })
 })
 

@@ -55,7 +55,34 @@ const login = async (data) => {
    }
 }
 
+const getAllUsers = async (query) => {
+   const page = Number(query.page) || 1
+
+   const limit = Number(query.limit) || 10
+
+   const search = query.search || ''
+
+   const users = await userRepository.getAllUsers({
+      page,
+      limit,
+      search
+   })
+
+   const total = await userRepository.countUsers(search)
+
+   return {
+      users,
+      pagination: {
+         total,
+         page,
+         limit,
+         totalPages: Math.ceil(total / limit)
+      }
+   }
+}
+
 export default {
    register,
-   login
+   login,
+   getAllUsers
 }
