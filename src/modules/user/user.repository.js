@@ -14,7 +14,31 @@ const findByEmail = async (email) => {
    })
 }
 
+const findUserWithPermissionsById = async (id) => {
+   return prisma.user.findUnique({
+      where: {
+         id
+      },
+      include: {
+         roles: {
+            include: {
+               role: {
+                  include: {
+                     permissions: {
+                        include: {
+                           permission: true
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   })
+}
+
 export default {
    create,
-   findByEmail
+   findByEmail,
+   findUserWithPermissionsById
 }

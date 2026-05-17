@@ -39,8 +39,17 @@ const me = asyncHandler(async (req, res) => {
    })
 })
 
+const index = asyncHandler(async (req, res) => {
+   return res.status(200).json({
+      success: true,
+
+      message: 'Users fetched successfully'
+   })
+})
+
 export default {
    register,
    login,
-   me
+   me,
+   index
 }

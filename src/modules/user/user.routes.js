@@ -4,6 +4,10 @@ import userController from './user.controller.js'
 
 import authMiddleware from '../../middlewares/auth.middleware.js'
 
+import authorize from '../../middlewares/authorize.middleware.js'
+
+import PERMISSIONS from '../../constants/permissions.js'
+
 const router = Router()
 
 router.post('/register', userController.register)
@@ -11,5 +15,12 @@ router.post('/register', userController.register)
 router.post('/login', userController.login)
 
 router.get('/me', authMiddleware, userController.me)
+
+router.get(
+   '/',
+   authMiddleware,
+   authorize(PERMISSIONS.USER_READ),
+   userController.index
+)
 
 export default router
