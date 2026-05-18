@@ -48,9 +48,20 @@ const index = asyncHandler(async (req, res) => {
    })
 })
 
+const show = asyncHandler(async (req, res) => {
+   const user = await userService.findUserById(req.params.id)
+
+   return res.status(200).json({
+      success: true,
+      message: 'User fetched successfully',
+      data: user
+   })
+})
+
 export default {
    register,
    login,
    me,
-   index
+   index,
+   show
 }

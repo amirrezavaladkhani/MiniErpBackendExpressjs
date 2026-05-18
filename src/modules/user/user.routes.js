@@ -23,4 +23,11 @@ router.get(
    userController.index
 )
 
+router.get(
+   '/:id',
+   authMiddleware,
+   authorize(PERMISSIONS.USER_READ),
+   userController.show
+)
+
 export default router

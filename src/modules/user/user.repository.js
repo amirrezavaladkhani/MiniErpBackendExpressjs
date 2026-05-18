@@ -14,11 +14,34 @@ const findByEmail = async (email) => {
    })
 }
 
+const findUserById = async (id) => {
+   return prisma.user.findUnique({
+      where: {
+         id
+      },
+      select: {
+         id: true,
+         firstName: true,
+         lastName: true,
+         email: true,
+         isActive: true,
+         createdAt: true,
+         updatedAt: true,
+         roles: {
+            include: {
+               role: true
+            }
+         }
+      }
+   })
+}
+
 const findUserWithPermissionsById = async (id) => {
    return prisma.user.findUnique({
       where: {
          id
-      }, include: {
+      },
+      include: {
          roles: {
             include: {
                role: {
@@ -36,11 +59,7 @@ const findUserWithPermissionsById = async (id) => {
    })
 }
 
-const getAllUsers = async ({
-                              page = 1,
-                              limit = 10,
-                              search = ''
-                           }) => {
+const getAllUsers = async ({ page = 1, limit = 10, search = '' }) => {
    const skip = (page - 1) * limit
 
    return prisma.user.findMany({
@@ -88,22 +107,32 @@ const countUsers = async (search = '') => {
          OR: [
             {
                firstName: {
-                  contains: search, mode: 'insensitive'
+                  contains: search,
+                  mode: 'insensitive'
                }
             },
             {
                lastName: {
-                  contains: search, mode: 'insensitive'
+                  contains: search,
+                  mode: 'insensitive'
                }
-            }, {
+            },
+            {
                email: {
-                  contains: search, mode: 'insensitive'
+                  contains: search,
+                  mode: 'insensitive'
                }
-            }]
+            }
+         ]
       }
    })
 }
 
 export default {
-   create, findByEmail, findUserWithPermissionsById, getAllUsers, countUsers
+   create,
+   findByEmail,
+   findUserWithPermissionsById,
+   getAllUsers,
+   countUsers,
+   findUserById
 }

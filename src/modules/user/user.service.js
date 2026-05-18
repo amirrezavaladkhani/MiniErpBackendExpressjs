@@ -68,7 +68,8 @@ const getAllUsers = async (query) => {
       search
    })
 
-   const total = await userRepository.countUsers(search)
+   const total = await
+      userRepository.countUsers(search)
 
    return {
       users,
@@ -81,8 +82,19 @@ const getAllUsers = async (query) => {
    }
 }
 
+const findUserById = async (id) => {
+   const user = await userRepository.findUserById(Number(id))
+
+   if (!user) {
+      throw new AppError('User not found', 404)
+   }
+
+   return user
+}
+
 export default {
    register,
    login,
-   getAllUsers
+   getAllUsers,
+   findUserById,
 }
