@@ -15,3 +15,11 @@ export const loginSchema = z.object({
 
    password: z.string().min(6)
 })
+
+export const updateSchema = z.object({
+   firstName: z.string().min(2).optional(),
+
+   lastName: z.string().min(2).optional(),
+
+   email: z.email().optional()
+})
