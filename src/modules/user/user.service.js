@@ -92,9 +92,28 @@ const findUserById = async (id) => {
    return user
 }
 
+const updateUser = async (id, body) => {
+   const user = await userRepository.findUserById(Number(id))
+
+   if (!user) {
+      throw new AppError('User not found', 404)
+   }
+
+   if (body.email) {
+      const existingUser = await userRepository.findByEmail(body.email)
+
+      if (existingUser && existingUser.id !== Number(id)) {
+         throw new AppError('Email already exists', 400)
+      }
+   }
+
+   return userRepository.updateUser(Number(id), body)
+}
+
 export default {
    register,
    login,
    getAllUsers,
    findUserById,
+   updateUser
 }

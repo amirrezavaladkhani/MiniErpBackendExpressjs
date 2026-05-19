@@ -30,4 +30,11 @@ router.get(
    userController.show
 )
 
+router.put(
+   '/:id',
+   authMiddleware,
+   authorize(PERMISSIONS.USER_UPDATE),
+   userController.update
+)
+
 export default router

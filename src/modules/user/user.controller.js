@@ -1,6 +1,6 @@
 import userService from './user.service.js'
 
-import { loginSchema, registerSchema } from './user.validation.js'
+import { loginSchema, registerSchema, updateSchema } from './user.validation.js'
 import asyncHandler from '../../utils/asyncHandler.js'
 
 const register = asyncHandler(async (req, res) => {
@@ -58,10 +58,26 @@ const show = asyncHandler(async (req, res) => {
    })
 })
 
+const update = asyncHandler(async (req, res) => {
+   const validatedData = updateSchema.parse(req.body)
+
+   const user = await userService.updateUser(
+      req.params.id,
+      validatedData
+   )
+
+   return res.status(200).json({
+      success: true,
+      message: 'User updated successfully',
+      data: user
+   })
+})
+
 export default {
    register,
    login,
    me,
    index,
-   show
+   show,
+   update
 }

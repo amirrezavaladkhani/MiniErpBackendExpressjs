@@ -128,11 +128,29 @@ const countUsers = async (search = '') => {
    })
 }
 
+const updateUser = async (id, data) => {
+   return prisma.user.update({
+      where: {
+         id
+      },
+      data,
+      select: {
+         id: true,
+         firstName: true,
+         lastName: true,
+         email: true,
+         isActive: true,
+         createdAt: true
+      }
+   })
+}
+
 export default {
    create,
    findByEmail,
    findUserWithPermissionsById,
    getAllUsers,
    countUsers,
-   findUserById
+   findUserById,
+   updateUser
 }
