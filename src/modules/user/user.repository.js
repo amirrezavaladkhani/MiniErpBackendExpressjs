@@ -9,7 +9,8 @@ const create = async (data) => {
 const findByEmail = async (email) => {
    return prisma.user.findUnique({
       where: {
-         email
+         email,
+         isActive:true
       }
    })
 }
@@ -17,7 +18,8 @@ const findByEmail = async (email) => {
 const findUserById = async (id) => {
    return prisma.user.findUnique({
       where: {
-         id
+         id,
+         isActive:true
       },
       select: {
          id: true,
@@ -39,7 +41,8 @@ const findUserById = async (id) => {
 const findUserWithPermissionsById = async (id) => {
    return prisma.user.findUnique({
       where: {
-         id
+         id,
+         isActive:true
       },
       include: {
          roles: {
@@ -83,7 +86,8 @@ const getAllUsers = async ({ page = 1, limit = 10, search = '' }) => {
                   mode: 'insensitive'
                }
             }
-         ]
+         ],
+         isActive:true
       },
       skip,
       take: limit,
@@ -123,7 +127,8 @@ const countUsers = async (search = '') => {
                   mode: 'insensitive'
                }
             }
-         ]
+         ],
+         isActive:true
       }
    })
 }
