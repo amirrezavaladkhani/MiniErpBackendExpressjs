@@ -73,11 +73,23 @@ const update = asyncHandler(async (req, res) => {
    })
 })
 
+const destroy = asyncHandler(async (req, res) => {
+   const user = await userService.deleteUser(req.params.id)
+
+   return res.status(200).json({
+      success: true,
+
+      message: 'User deleted successfully',
+
+      data: user
+   })
+})
 export default {
    register,
    login,
    me,
    index,
    show,
-   update
+   update,
+   destroy
 }

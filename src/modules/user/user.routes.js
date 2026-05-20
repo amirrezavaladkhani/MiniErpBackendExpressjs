@@ -37,4 +37,11 @@ router.put(
    userController.update
 )
 
+router.delete(
+   '/:id',
+   authMiddleware,
+   authorize(PERMISSIONS.USER_DELETE),
+   userController.destroy
+)
+
 export default router

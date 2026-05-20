@@ -145,6 +145,24 @@ const updateUser = async (id, data) => {
    })
 }
 
+const softDeleteUser = async (id) => {
+   return prisma.user.update({
+      where: {
+         id
+      },
+      data: {
+         isActive : false
+      },
+      select: {
+         id: true,
+         firstName: true,
+         lastName: true,
+         email: true,
+         isActive: true,
+      }
+   })
+}
+
 export default {
    create,
    findByEmail,
@@ -152,5 +170,6 @@ export default {
    getAllUsers,
    countUsers,
    findUserById,
-   updateUser
+   updateUser,
+   softDeleteUser
 }

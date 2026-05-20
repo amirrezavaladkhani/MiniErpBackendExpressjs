@@ -110,10 +110,21 @@ const updateUser = async (id, body) => {
    return userRepository.updateUser(Number(id), body)
 }
 
+const deleteUser = async (id) => {
+   const user = await userRepository.findUserById(id)
+
+   if (!user) {
+      throw new AppError('User not found', 404)
+   }
+
+   return userRepository.softDeleteUser(Number(id))
+}
+
 export default {
    register,
    login,
    getAllUsers,
    findUserById,
-   updateUser
+   updateUser,
+   deleteUser
 }
