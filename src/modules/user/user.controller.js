@@ -84,6 +84,19 @@ const destroy = asyncHandler(async (req, res) => {
       data: user
    })
 })
+
+const restore = asyncHandler(async (req, res) => {
+   const user = await userService.restoreUser(req.params.id)
+
+   return res.status(200).json({
+      success: true,
+
+      message: 'User restored successfully',
+
+      data: user
+   })
+})
+
 export default {
    register,
    login,
@@ -91,5 +104,6 @@ export default {
    index,
    show,
    update,
-   destroy
+   destroy,
+   restore
 }

@@ -15,11 +15,11 @@ const findByEmail = async (email) => {
    })
 }
 
-const findUserById = async (id) => {
-   return prisma.user.findUnique({
+const findUserById = async (id , isActive = true) => {
+   return prisma.user.findFirst({
       where: {
          id,
-         isActive:true
+         isActive ///check
       },
       select: {
          id: true,
@@ -168,6 +168,24 @@ const softDeleteUser = async (id) => {
    })
 }
 
+const restoreUser = async (id) => {
+   return prisma.user.update({
+      where: {
+         id
+      },
+      data:{
+         isActive : true
+      },
+      select: {
+         id: true,
+         firstName: true,
+         lastName: true,
+         email: true,
+         isActive: true,
+      }
+   })
+}
+
 export default {
    create,
    findByEmail,
@@ -176,5 +194,6 @@ export default {
    countUsers,
    findUserById,
    updateUser,
-   softDeleteUser
+   softDeleteUser,
+   restoreUser
 }

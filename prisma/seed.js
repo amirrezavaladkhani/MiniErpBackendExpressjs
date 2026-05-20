@@ -41,7 +41,14 @@ async function main() {
             name: 'Delete User',
             slug: PERMISSIONS.USER_DELETE
          }
+      }),
+      prisma.permission.create({
+         data: {
+            name: 'Restore User',
+            slug: PERMISSIONS.USER_RESTORE
+         }
       })
+
    ])
 
    for (const permission of permissions) {

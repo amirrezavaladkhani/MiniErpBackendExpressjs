@@ -44,4 +44,11 @@ router.delete(
    userController.destroy
 )
 
+router.patch(
+   '/:id/restore',
+   authMiddleware,
+   authorize(PERMISSIONS.USER_RESTORE),
+   userController.restore
+)
+
 export default router
