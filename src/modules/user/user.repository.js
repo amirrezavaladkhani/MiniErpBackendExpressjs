@@ -18,7 +18,8 @@ const findByEmail = async (email) => {
 const findUserById = async (id) => {
    return prisma.user.findUnique({
       where: {
-         id
+         id,
+         isActive: true
       },
       select: {
          id: true,

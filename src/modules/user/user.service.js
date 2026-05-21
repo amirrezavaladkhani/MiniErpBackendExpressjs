@@ -111,7 +111,7 @@ const updateUser = async (id, body) => {
 }
 
 const deleteUser = async (id) => {
-   const user = await userRepository.findUserById(id)
+   const user = await userRepository.findUserById(Number(id))
 
    if (!user) {
       throw new AppError('User not found', 404)
