@@ -121,9 +121,13 @@ const deleteUser = async (id) => {
 }
 
 const restoreUser = async (id) => {
-   const user = await userRepository.findUserById(id , false)
+   const deActiveUser = await userRepository.findDeActiveUserById(id)
 
-   if (!user) {
+   if (!deActiveUser) {
+      const activeUser = await userRepository.findUserById(id)
+      if (activeUser) {
+         throw new AppError('User Already Active', 400)
+      }
       throw new AppError('User not found', 404)
    }
 

@@ -10,16 +10,38 @@ const findByEmail = async (email) => {
    return prisma.user.findUnique({
       where: {
          email,
-         isActive:true
+         isActive: true
       }
    })
 }
 
-const findUserById = async (id , isActive = true) => {
+const findUserById = async (id) => {
+   return prisma.user.findUnique({
+      where: {
+         id
+      },
+      select: {
+         id: true,
+         firstName: true,
+         lastName: true,
+         email: true,
+         isActive: true,
+         createdAt: true,
+         updatedAt: true,
+         roles: {
+            include: {
+               role: true
+            }
+         }
+      }
+   })
+}
+
+const findDeActiveUserById = async (id) => {
    return prisma.user.findFirst({
       where: {
          id,
-         isActive ///check
+         isActive: false
       },
       select: {
          id: true,
@@ -42,7 +64,7 @@ const findUserWithPermissionsById = async (id) => {
    return prisma.user.findUnique({
       where: {
          id,
-         isActive:true
+         isActive: true
       },
       include: {
          roles: {
@@ -87,7 +109,7 @@ const getAllUsers = async ({ page = 1, limit = 10, search = '' }) => {
                }
             }
          ],
-         isActive:true
+         isActive: true
       },
       skip,
       take: limit,
@@ -128,7 +150,7 @@ const countUsers = async (search = '') => {
                }
             }
          ],
-         isActive:true
+         isActive: true
       }
    })
 }
@@ -156,14 +178,14 @@ const softDeleteUser = async (id) => {
          id
       },
       data: {
-         isActive : false
+         isActive: false
       },
       select: {
          id: true,
          firstName: true,
          lastName: true,
          email: true,
-         isActive: true,
+         isActive: true
       }
    })
 }
@@ -173,15 +195,15 @@ const restoreUser = async (id) => {
       where: {
          id
       },
-      data:{
-         isActive : true
+      data: {
+         isActive: true
       },
       select: {
          id: true,
          firstName: true,
          lastName: true,
          email: true,
-         isActive: true,
+         isActive: true
       }
    })
 }
@@ -195,5 +217,6 @@ export default {
    findUserById,
    updateUser,
    softDeleteUser,
-   restoreUser
+   restoreUser,
+   findDeActiveUserById
 }
