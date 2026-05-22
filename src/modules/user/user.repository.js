@@ -9,8 +9,7 @@ const create = async (data) => {
 const findByEmail = async (email) => {
    return prisma.user.findUnique({
       where: {
-         email,
-         isActive: true
+         email
       }
    })
 }
@@ -209,6 +208,31 @@ const restoreUser = async (id) => {
    })
 }
 
+//********************* user role *********************//
+
+const assignRoleToUser = async (userId, roleId) => {
+   return prisma.userRole.create({
+      data: {
+         roleId,
+         userId
+      },
+      include: {
+         role: true
+      }
+   })
+}
+
+const findUserRole = async (userId, roleId) => {
+   return prisma.userRole.findFirst({
+      where: {
+         userId,
+         roleId
+      }
+   })
+}
+
+//********************* user role *********************//
+
 export default {
    create,
    findByEmail,
@@ -219,5 +243,7 @@ export default {
    updateUser,
    softDeleteUser,
    restoreUser,
-   findDeActiveUserById
+   findDeActiveUserById,
+   assignRoleToUser,
+   findUserRole
 }
