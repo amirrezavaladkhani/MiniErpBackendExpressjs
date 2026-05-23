@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt'
 
 import userRepository from './user.repository.js'
+import roleRepository from '../role/role.repository.js'
 
 import generateToken from '../../utils/jwt.js'
 import AppError from '../../utils/appError.js'
@@ -134,6 +135,38 @@ const restoreUser = async (id) => {
    return userRepository.restoreUser(Number(id))
 }
 
+//********************* user role *********************//
+
+const assignRoleToUser = async (userId, roleId) => {
+   const user = await userRepository.findUserById(Number(userId))
+
+   if (!user) {
+      throw new AppError('User not found', 404)
+   }
+
+   const role = await roleRepository.findRoleById(Number(roleId))
+
+   if (!role) {
+      throw new AppError('role not found', 404)
+   }
+
+   const existingUserRole = await userRepository.findUserRole(
+      Number(userId),
+      Number(roleId)
+   )
+
+   if (existingUserRole) {
+      throw new AppError('Role Already Assigned User', 400)
+   }
+
+   return userRepository.assignRoleToUser(
+      Number(userId),
+      Number(roleId)
+   )
+}
+
+//********************* user role *********************//
+
 export default {
    register,
    login,
@@ -141,5 +174,6 @@ export default {
    findUserById,
    updateUser,
    deleteUser,
-   restoreUser
+   restoreUser,
+   assignRoleToUser
 }

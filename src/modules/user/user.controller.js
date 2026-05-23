@@ -97,6 +97,19 @@ const restore = asyncHandler(async (req, res) => {
    })
 })
 
+const assignRole = asyncHandler(async (req, res) => {
+   const result = await userService.assignRoleToUser(
+      req.params.id,
+      req.body.roleId
+   )
+
+   return res.status(201).json({
+      success: true,
+      message: 'Role Assigned successfully',
+      data: result
+   })
+})
+
 export default {
    register,
    login,
@@ -105,5 +118,6 @@ export default {
    show,
    update,
    destroy,
-   restore
+   restore,
+   assignRole
 }

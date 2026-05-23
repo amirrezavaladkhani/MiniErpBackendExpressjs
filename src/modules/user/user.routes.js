@@ -51,4 +51,11 @@ router.patch(
    userController.restore
 )
 
+router.post(
+   '/:id/roles',
+   authMiddleware,
+   authorize(PERMISSIONS.USER_ASSIGN_ROLE),
+   userController.assignRole
+)
+
 export default router
