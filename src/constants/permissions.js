@@ -7,7 +7,9 @@ const PERMISSIONS = {
 
    USER_DELETE: 'user.delete',
 
-   USER_RESTORE: 'user.restore'
+   USER_RESTORE: 'user.restore',
+
+   USER_ASSIGN_ROLE: 'user.assign.role'
 }
 
 export default PERMISSIONS

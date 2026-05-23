@@ -42,13 +42,20 @@ async function main() {
             slug: PERMISSIONS.USER_DELETE
          }
       }),
+
       prisma.permission.create({
          data: {
             name: 'Restore User',
             slug: PERMISSIONS.USER_RESTORE
          }
-      })
+      }),
 
+      prisma.permission.create({
+         data: {
+            name: 'Assign Role To User',
+            slug: PERMISSIONS.USER_ASSIGN_ROLE
+         }
+      })
    ])
 
    for (const permission of permissions) {
