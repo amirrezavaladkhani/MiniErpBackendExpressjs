@@ -69,8 +69,7 @@ const getAllUsers = async (query) => {
       search
    })
 
-   const total = await
-      userRepository.countUsers(search)
+   const total = await userRepository.countUsers(search)
 
    return {
       users,
@@ -159,10 +158,7 @@ const assignRoleToUser = async (userId, roleId) => {
       throw new AppError('Role Already Assigned User', 400)
    }
 
-   return userRepository.assignRoleToUser(
-      Number(userId),
-      Number(roleId)
-   )
+   return userRepository.assignRoleToUser(Number(userId), Number(roleId))
 }
 
 //********************* user role *********************//

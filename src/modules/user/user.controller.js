@@ -61,10 +61,7 @@ const show = asyncHandler(async (req, res) => {
 const update = asyncHandler(async (req, res) => {
    const validatedData = updateSchema.parse(req.body)
 
-   const user = await userService.updateUser(
-      req.params.id,
-      validatedData
-   )
+   const user = await userService.updateUser(req.params.id, validatedData)
 
    return res.status(200).json({
       success: true,
