@@ -8,6 +8,38 @@ const findRoleById = async (id) => {
    })
 }
 
+const create = async (data) => {
+   return prisma.role.create({
+      data
+   })
+}
+
+const findByName = async (name) => {
+   return prisma.role.findUnique({
+      where: {
+         name
+      }
+   })
+}
+
+const getAllRoles = async () => {
+   return prisma.role.findMany({
+      include: {
+         permissions: {
+            include: {
+               permission: true
+            }
+         }
+      },
+      orderBy: {
+         createdAt: 'desc'
+      }
+   })
+}
+
 export default {
-   findRoleById
+   findRoleById,
+   create,
+   findByName,
+   getAllRoles
 }
