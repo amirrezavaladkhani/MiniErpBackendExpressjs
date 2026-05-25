@@ -9,7 +9,15 @@ const PERMISSIONS = {
 
    USER_RESTORE: 'user.restore',
 
-   USER_ASSIGN_ROLE: 'user.assign.role'
+   USER_ASSIGN_ROLE: 'user.assign.role',
+
+   //************************ role ************************//
+
+   ROLE_CREATE: 'role.create',
+
+   ROLE_VIEW: 'role.view',
+
+   //************************ role ************************//
 }
 
 export default PERMISSIONS

@@ -55,7 +55,22 @@ async function main() {
             name: 'Assign Role To User',
             slug: PERMISSIONS.USER_ASSIGN_ROLE
          }
+      }),
+
+      prisma.permission.create({
+         data: {
+            name: 'Create Role',
+            slug: PERMISSIONS.ROLE_CREATE
+         }
+      }),
+
+      prisma.permission.create({
+         data: {
+            name: 'View Roles',
+            slug: PERMISSIONS.ROLE_VIEW
+         }
       })
+
    ])
 
    for (const permission of permissions) {
