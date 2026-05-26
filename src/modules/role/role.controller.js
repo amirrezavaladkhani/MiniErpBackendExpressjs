@@ -7,13 +7,11 @@ import { createRoleSchema } from './role.validation.js'
 const create = asyncHandler(async (req, res) => {
    const validateData = createRoleSchema.parse(req.body)
 
-   const role = await roleService.createRole(req.body)
+   const role = await roleService.createRole(validateData)
 
    return res.status(201).json({
       success: true,
-
       message: 'Role created successfully.',
-
       data: role
    })
 })
