@@ -49,6 +49,7 @@ PostgreSQL
 
 📁 Project Structure
 
+```txt
 src/
 ├── config/
 │   └── prisma.js
