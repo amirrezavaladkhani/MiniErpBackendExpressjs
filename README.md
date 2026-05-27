@@ -95,6 +95,7 @@ prisma/
 ├── migrations/
 ├── schema.prisma
 └── seed.js
+```
 
 
 ---
