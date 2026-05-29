@@ -37,11 +37,20 @@ const getAllRoles = async () => {
    })
 }
 
+const findRolePermission = async (roleId, permissionId) => {
+   return prisma.rolePermission.findFirst({
+      where: {
+         roleId,
+         permissionId
+      }
+   })
+}
+
 const removePermissionFromRole = async (
    roleId,
    permissionId
 ) => {
-   return prisma.RolePermission.deleteMany({
+   return prisma.rolePermission.deleteMany({
       where: {
          roleId,
          permissionId
@@ -54,5 +63,6 @@ export default {
    create,
    findByName,
    getAllRoles,
+   findRolePermission,
    removePermissionFromRole
 }

@@ -17,6 +17,8 @@ const PERMISSIONS = {
 
    ROLE_VIEW: 'role.view',
 
+   ROLE_REMOVE_PERMISSION: 'role.remove.permission',
+
    //************************ role ************************//
 }
 

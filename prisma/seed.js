@@ -69,7 +69,15 @@ async function main() {
             name: 'View Roles',
             slug: PERMISSIONS.ROLE_VIEW
          }
+      }),
+
+      prisma.permission.create({
+         data: {
+            name: 'Remove Permission From Role',
+            slug: PERMISSIONS.ROLE_REMOVE_PERMISSION
+         }
       })
+
 
    ])
 
