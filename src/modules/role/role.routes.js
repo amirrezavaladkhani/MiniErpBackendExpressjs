@@ -24,4 +24,13 @@ router.get(
    roleController.getAll
 )
 
+router.delete(
+   '/:roleId/permissions/:permissionId',
+   authMiddleware,
+   authorize(
+      PERMISSIONS.ROLE_REMOVE_PERMISSION
+   ),
+   roleController.removePermission
+)
+
 export default router
