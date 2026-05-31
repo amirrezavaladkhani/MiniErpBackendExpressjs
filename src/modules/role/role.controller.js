@@ -38,8 +38,23 @@ const removePermission = asyncHandler(async (req, res) => {
    })
 })
 
+const getRoleById = asyncHandler(
+   async (req, res) => {
+      const role =
+         await roleService.getRoleById(
+            req.params.id
+         )
+
+      return res.status(200).json({
+         success: true,
+         data: role
+      })
+   }
+)
+
 export default {
    create,
    getAll,
-   removePermission
+   removePermission,
+   getRoleById
 }

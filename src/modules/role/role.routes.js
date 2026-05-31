@@ -24,6 +24,8 @@ router.get(
    roleController.getAll
 )
 
+
+//check
 router.delete(
    '/:roleId/permissions/:permissionId',
    authMiddleware,

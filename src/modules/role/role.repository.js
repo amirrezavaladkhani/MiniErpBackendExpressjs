@@ -3,7 +3,15 @@ import prisma from '../../config/prisma.js'
 const findRoleById = async (id) => {
    return prisma.role.findUnique({
       where: {
-         id
+         id,
+         isActive: true
+      },
+      include: {
+         permissions: {
+            include: {
+               permission: true
+            }
+         }
       }
    })
 }

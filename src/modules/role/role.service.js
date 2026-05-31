@@ -17,6 +17,21 @@ const getAllRoles = async () => {
    return roleRepository.getAllRoles()
 }
 
+const getRoleById = async (id) => {
+   const role = await roleRepository.findRoleById(
+      Number(id)
+   )
+
+   if (!role) {
+      throw new AppError(
+         'Role not found',
+         404
+      )
+   }
+
+   return role
+}
+
 const removePermissionFromRole = async (roleId, permissionId) => {
    const role = roleRepository.findRoleById(Number(roleId))
 
@@ -50,5 +65,6 @@ const removePermissionFromRole = async (roleId, permissionId) => {
 export default {
    createRole,
    getAllRoles,
-   removePermissionFromRole
+   removePermissionFromRole,
+   getRoleById
 }
