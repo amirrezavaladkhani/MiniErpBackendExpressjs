@@ -24,6 +24,15 @@ router.get(
    roleController.getAll
 )
 
+//check
+router.get(
+   '/:id',
+   authMiddleware,
+   authorize(
+      PERMISSIONS.ROLE_VIEW
+   ),
+   roleController.getRoleById
+)
 
 //check
 router.delete(
