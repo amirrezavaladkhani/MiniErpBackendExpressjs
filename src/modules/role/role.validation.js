@@ -10,3 +10,10 @@ export const createRoleSchema = z.object({
       .min(2)
       .max(50)
 })
+
+export const updateRoleSchema = z.object({
+   name: z
+      .string()
+      .min(2)
+      .max(100)
+})

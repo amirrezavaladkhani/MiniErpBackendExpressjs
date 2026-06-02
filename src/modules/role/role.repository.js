@@ -54,6 +54,15 @@ const findRolePermission = async (roleId, permissionId) => {
    })
 }
 
+const updateRole = async (id, data) => {
+   return prisma.role.update({
+      where: {
+         id
+      },
+      data
+   })
+}
+
 const removePermissionFromRole = async (
    roleId,
    permissionId
@@ -72,5 +81,6 @@ export default {
    findByName,
    getAllRoles,
    findRolePermission,
-   removePermissionFromRole
+   removePermissionFromRole,
+   updateRole
 }
