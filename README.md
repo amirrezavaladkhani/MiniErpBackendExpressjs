@@ -42,7 +42,7 @@ Prisma ORM
  ↓
 PostgreSQL
 
----
+```
 
 📁 Project Structure
 
@@ -92,7 +92,7 @@ prisma/
 ├── schema.prisma
 └── seed.js
 
----
+```
 
 ✨ Features
 
