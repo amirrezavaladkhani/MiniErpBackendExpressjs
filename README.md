@@ -1,4 +1,4 @@
-# Mini ERP Backend - Express.js
+Mini ERP Backend - Express.js
 
 A modern, scalable, and production-ready ERP backend architecture built with Express.js, Prisma ORM, and PostgreSQL.
 
@@ -6,7 +6,7 @@ This project is designed using modular architecture, layered architecture princi
 
 ---
 
-# 🚀 Tech Stack
+🚀 Tech Stack
 
 - Node.js
 - Express.js
@@ -22,11 +22,10 @@ This project is designed using modular architecture, layered architecture princi
 
 ---
 
-# 🏗 Architecture
+🏗 Architecture
 
 This project follows a layered enterprise architecture:
 
-```txt
 Request
  ↓
 Middleware
@@ -42,14 +41,11 @@ Repository
 Prisma ORM
  ↓
 PostgreSQL
-```
-
 
 ---
 
 📁 Project Structure
 
-```txt
 src/
 ├── config/
 │   └── prisma.js
@@ -95,8 +91,6 @@ prisma/
 ├── migrations/
 ├── schema.prisma
 └── seed.js
-```
-
 
 ---
 
@@ -104,91 +98,59 @@ prisma/
 
 🔐 Authentication System
 
-User Registration
-
-User Login
-
-JWT Authentication
-
-Protected Routes
-
-Current User Endpoint
-
-
+- User Registration
+- User Login
+- JWT Authentication
+- Protected Routes
+- Current User Endpoint
 
 ---
 
 🛡 Authorization & RBAC
 
-Dynamic Role-Based Access Control (RBAC)
-
-Permission-Based Authorization
-
-Dynamic Roles & Permissions
-
-Assign Role To User
-
-Assign Permission To Role
-
-Authorization Middleware
-
-Enterprise ACL Structure
-
-
+- Dynamic Role-Based Access Control (RBAC)
+- Permission-Based Authorization
+- Dynamic Roles & Permissions
+- Create Role
+- View Roles
+- Update Role
+- Assign Permission To Role
+- Remove Permission From Role
+- Authorization Middleware
+- Enterprise ACL Structure
 
 ---
 
 👥 User Management
 
-Create User
-
-Update User
-
-Soft Delete User
-
-Restore User
-
-Get Single User
-
-Get All Users
-
-Pagination
-
-Search & Filtering
-
-
+- Create User
+- Update User
+- Soft Delete User
+- Restore User
+- Get Single User
+- Get All Users
+- Pagination
+- Search & Filtering
 
 ---
 
 🧠 Validation & Error Handling
 
-Zod Validation
-
-Global Error Middleware
-
-Async Handler Wrapper
-
-Centralized Error Responses
-
-Custom AppError Class
-
-
+- Zod Validation
+- Global Error Middleware
+- Async Handler Wrapper
+- Centralized Error Responses
+- Custom AppError Class
 
 ---
 
 🔒 Security
 
-Helmet
-
-CORS
-
-Password Hashing (bcrypt)
-
-JWT Token Authentication
-
-Protected APIs
-
-
+- Helmet
+- CORS
+- Password Hashing (bcrypt)
+- JWT Token Authentication
+- Protected APIs
 
 ---
 
@@ -206,7 +168,6 @@ RolePermission
  ↓
 Permission
 
-
 ---
 
 🛠 Installation
@@ -223,19 +184,17 @@ Install dependencies:
 
 npm install
 
-
 ---
 
 ⚙️ Environment Variables
 
-Create a .env file in the root directory:
+Create a ".env" file in the root directory:
 
 PORT=3000
 
 DATABASE_URL="postgresql://USERNAME:PASSWORD@localhost:5432/mini_erp"
 
 JWT_SECRET=your_super_secret_key
-
 
 ---
 
@@ -253,7 +212,6 @@ Run database seed:
 
 npx prisma db seed
 
-
 ---
 
 ▶️ Run Project
@@ -265,7 +223,6 @@ npm run dev
 Production mode:
 
 npm start
-
 
 ---
 
@@ -284,7 +241,6 @@ POST /api/users/login
 Current User
 
 GET /api/users/me
-
 
 ---
 
@@ -310,7 +266,6 @@ Restore User
 
 PATCH /api/users/:id/restore
 
-
 ---
 
 🛡 Roles
@@ -323,91 +278,96 @@ Get All Roles
 
 GET /api/roles
 
-Assign Role To User
+Get Role By Id
 
-POST /api/users/:id/roles
+GET /api/roles/:id
 
+Update Role
 
----
-
-🔑 Permissions
+PATCH /api/roles/:id
 
 Assign Permission To Role
 
 POST /api/roles/:id/permissions
 
+Remove Permission From Role
+
+DELETE /api/roles/:roleId/permissions/:permissionId
 
 ---
 
 📌 Roadmap
 
-[x] Authentication System
+- [x] Authentication System
 
-[x] JWT Authorization
+- [x] JWT Authorization
 
-[x] Modular Architecture
+- [x] Modular Architecture
 
-[x] Layered Architecture
+- [x] Layered Architecture
 
-[x] Global Error Handling
+- [x] Global Error Handling
 
-[x] RBAC Authorization
+- [x] RBAC Authorization
 
-[x] Dynamic Roles & Permissions
+- [x] Dynamic Roles & Permissions
 
-[x] User Management APIs
+- [x] User Management APIs
 
-[x] Pagination & Filtering
+- [x] Pagination & Filtering
 
-[x] Soft Delete & Restore System
+- [x] Soft Delete & Restore User System
 
-[ ] Refresh Token System
+- [x] Role Management APIs
 
-[ ] Audit Logs
+- [x] Permission Assignment System
 
-[ ] Rate Limiting
+- [x] Permission Revocation System
 
-[ ] API Documentation (Swagger)
+- [ ] Assign Role To User
 
-[ ] Docker Support
+- [ ] Remove Role From User
 
-[ ] File Upload System
+- [ ] Soft Delete & Restore Roles
 
-[ ] Notification System
+- [ ] Refresh Token System
 
-[ ] Product Module
+- [ ] Audit Logs
 
-[ ] Invoice Module
+- [ ] Rate Limiting
 
-[ ] Employee Module
+- [ ] API Documentation (Swagger)
 
-[ ] Unit & Integration Testing
+- [ ] Docker Support
 
+- [ ] File Upload System
 
+- [ ] Notification System
+
+- [ ] Product Module
+
+- [ ] Invoice Module
+
+- [ ] Employee Module
+
+- [ ] Unit & Integration Testing
 
 ---
 
 🧠 Engineering Concepts Used
 
-Repository Pattern
-
-Layered Architecture
-
-Modular Architecture
-
-RBAC (Role-Based Access Control)
-
-ACL (Access Control List)
-
-Soft Delete Architecture
-
-Defensive Programming
-
-Validation Layer Separation
-
-Enterprise Authorization Flow
-
-
+- Repository Pattern
+- Layered Architecture
+- Modular Architecture
+- RBAC (Role-Based Access Control)
+- ACL (Access Control List)
+- JWT Authentication
+- Soft Delete Architecture
+- Defensive Programming
+- Validation Layer Separation
+- Centralized Error Handling
+- Permission Driven Authorization
+- Enterprise Authorization Flow
 
 ---
 
@@ -415,9 +375,9 @@ Enterprise Authorization Flow
 
 ISC
 
-
 ---
 
 👨‍💻 Author
 
-GitHub: [Amirreza Valadkhani](https://github.com/amirrezavaladkhani?utm_source=chatgpt.com)
+GitHub:
+https://github.com/amirrezavaladkhani
