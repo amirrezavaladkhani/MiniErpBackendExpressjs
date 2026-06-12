@@ -1,383 +1,314 @@
-Mini ERP Backend - Express.js
+# 🚀 Mini ERP Backend
 
-A modern, scalable, and production-ready ERP backend architecture built with Express.js, Prisma ORM, and PostgreSQL.
+> A modern, scalable, and production-ready ERP backend built with **Express.js**, **Prisma ORM**, and **PostgreSQL**, following enterprise-grade architecture and RBAC authorization principles.
 
-This project is designed using modular architecture, layered architecture principles, and enterprise-level RBAC authorization systems.
-
----
-
-🚀 Tech Stack
-
-- Node.js
-- Express.js
-- PostgreSQL
-- Prisma ORM
-- JWT Authentication
-- Zod Validation
-- ESLint + Prettier
-- ESM Modules
-- bcrypt
-- Helmet
-- Morgan
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-20+-339933?logo=node.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/Express.js-Backend-black?logo=express" />
+  <img src="https://img.shields.io/badge/PostgreSQL-Database-4169E1?logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma" />
+  <img src="https://img.shields.io/badge/JWT-Authentication-orange" />
+  <img src="https://img.shields.io/badge/License-ISC-green" />
+</p>
 
 ---
 
-🏗 Architecture
+## ✨ Overview
 
-This project follows a layered enterprise architecture:
+This project demonstrates how to build a maintainable ERP backend using:
 
-Request
- ↓
+* 🏗 Modular Architecture
+* 📚 Layered Architecture
+* 🔐 JWT Authentication
+* 🛡 Dynamic RBAC Authorization
+* ✅ Request Validation with Zod
+* 🗄 Prisma ORM + PostgreSQL
+* 🚀 Production-ready project structure
+
+---
+
+## 🛠 Tech Stack
+
+| Category       | Technologies     |
+| -------------- | ---------------- |
+| Runtime        | Node.js          |
+| Framework      | Express.js       |
+| Database       | PostgreSQL       |
+| ORM            | Prisma           |
+| Authentication | JWT              |
+| Validation     | Zod              |
+| Security       | Helmet, bcrypt   |
+| Logging        | Morgan           |
+| Code Style     | ESLint, Prettier |
+| Module System  | ESM              |
+
+---
+
+## 🏛 Architecture
+
+```text
+Client
+   │
+   ▼
 Middleware
- ↓
-Route
- ↓
-Controller
- ↓
-Service
- ↓
-Repository
- ↓
+   │
+   ▼
+Routes
+   │
+   ▼
+Controllers
+   │
+   ▼
+Services
+   │
+   ▼
+Repositories
+   │
+   ▼
 Prisma ORM
- ↓
+   │
+   ▼
 PostgreSQL
-
 ```
 
-📁 Project Structure
+---
 
-src/
-├── config/
-│   └── prisma.js
-│
-├── constants/
-│   └── permissions.js
-│
-├── middlewares/
-│   ├── auth.middleware.js
-│   ├── authorize.middleware.js
-│   └── error.middleware.js
-│
-├── modules/
-│   ├── user/
-│   │   ├── user.controller.js
-│   │   ├── user.repository.js
-│   │   ├── user.routes.js
-│   │   ├── user.service.js
-│   │   └── user.validation.js
-│   │
-│   ├── role/
-│   │   ├── role.controller.js
-│   │   ├── role.repository.js
-│   │   ├── role.routes.js
-│   │   ├── role.service.js
-│   │   └── role.validation.js
-│   │
-│   └── permission/
-│       └── permission.repository.js
-│
-├── routes/
-│   └── index.js
-│
-├── utils/
-│   ├── appError.js
-│   ├── asyncHandler.js
-│   └── jwt.js
-│
+## 📂 Project Structure
+
+```text
+src
+├── config
+├── constants
+├── middlewares
+├── modules
+│   ├── user
+│   ├── role
+│   └── permission
+├── routes
+├── utils
 ├── app.js
 └── server.js
 
-prisma/
-├── migrations/
+prisma
+├── migrations
 ├── schema.prisma
 └── seed.js
-
 ```
 
-✨ Features
+---
 
-🔐 Authentication System
+## 🔥 Features
 
-- User Registration
-- User Login
-- JWT Authentication
-- Protected Routes
-- Current User Endpoint
+### 🔐 Authentication
+
+* User Registration
+* User Login
+* JWT Authentication
+* Protected Routes
+* Current User Endpoint
+
+### 🛡 Authorization (RBAC)
+
+* Dynamic Roles
+* Dynamic Permissions
+* Permission-based Authorization
+* Role Management APIs
+* Permission Assignment & Revocation
+* Authorization Middleware
+
+### 👥 User Management
+
+* Create User
+* Update User
+* Soft Delete
+* Restore User
+* Get User by ID
+* List Users
+* Pagination
+* Filtering & Search
+
+### ✅ Validation & Error Handling
+
+* Zod Validation
+* Global Error Handler
+* Async Wrapper
+* Custom AppError
+* Centralized Error Responses
+
+### 🔒 Security
+
+* Helmet
+* bcrypt Password Hashing
+* JWT Tokens
+* Protected APIs
+* CORS Support
 
 ---
 
-🛡 Authorization & RBAC
+## 🗄 RBAC Schema
 
-- Dynamic Role-Based Access Control (RBAC)
-- Permission-Based Authorization
-- Dynamic Roles & Permissions
-- Create Role
-- View Roles
-- Update Role
-- Assign Permission To Role
-- Remove Permission From Role
-- Authorization Middleware
-- Enterprise ACL Structure
-
----
-
-👥 User Management
-
-- Create User
-- Update User
-- Soft Delete User
-- Restore User
-- Get Single User
-- Get All Users
-- Pagination
-- Search & Filtering
-
----
-
-🧠 Validation & Error Handling
-
-- Zod Validation
-- Global Error Middleware
-- Async Handler Wrapper
-- Centralized Error Responses
-- Custom AppError Class
-
----
-
-🔒 Security
-
-- Helmet
-- CORS
-- Password Hashing (bcrypt)
-- JWT Token Authentication
-- Protected APIs
-
----
-
-🗄 Database Design
-
-Current RBAC architecture:
-
+```text
 User
- ↓
+ │
+ ▼
 UserRole
- ↓
+ │
+ ▼
 Role
- ↓
+ │
+ ▼
 RolePermission
- ↓
+ │
+ ▼
 Permission
+```
 
 ---
 
-🛠 Installation
+## 🚀 Getting Started
 
-Clone repository:
+### Clone
 
+```bash
 git clone https://github.com/amirrezavaladkhani/MiniErpBackendExpressjs.git
 
-Move into project directory:
-
 cd MiniErpBackendExpressjs
+```
 
-Install dependencies:
+### Install
 
+```bash
 npm install
+```
 
----
+### Environment Variables
 
-⚙️ Environment Variables
+Create a `.env` file:
 
-Create a ".env" file in the root directory:
-
+```env
 PORT=3000
 
 DATABASE_URL="postgresql://USERNAME:PASSWORD@localhost:5432/mini_erp"
 
 JWT_SECRET=your_super_secret_key
+```
 
----
+### Prisma
 
-🗄 Prisma Setup
-
-Run migrations:
-
+```bash
 npx prisma migrate dev
-
-Generate Prisma Client:
 
 npx prisma generate
 
-Run database seed:
-
 npx prisma db seed
+```
 
----
+### Run
 
-▶️ Run Project
+Development:
 
-Development mode:
-
+```bash
 npm run dev
+```
 
-Production mode:
+Production:
 
+```bash
 npm start
+```
 
 ---
 
-🔐 API Endpoints
+## 📡 API Overview
 
-Authentication
+### Authentication
 
-Register
+| Method | Endpoint              |
+| ------ | --------------------- |
+| POST   | `/api/users/register` |
+| POST   | `/api/users/login`    |
+| GET    | `/api/users/me`       |
 
-POST /api/users/register
+### Users
 
-Login
+| Method | Endpoint                 |
+| ------ | ------------------------ |
+| GET    | `/api/users`             |
+| GET    | `/api/users/:id`         |
+| PATCH  | `/api/users/:id`         |
+| DELETE | `/api/users/:id`         |
+| PATCH  | `/api/users/:id/restore` |
 
-POST /api/users/login
+### Roles
 
-Current User
-
-GET /api/users/me
-
----
-
-👥 Users
-
-Get All Users
-
-GET /api/users
-
-Get Single User
-
-GET /api/users/:id
-
-Update User
-
-PATCH /api/users/:id
-
-Soft Delete User
-
-DELETE /api/users/:id
-
-Restore User
-
-PATCH /api/users/:id/restore
+| Method | Endpoint                                       |
+| ------ | ---------------------------------------------- |
+| POST   | `/api/roles`                                   |
+| GET    | `/api/roles`                                   |
+| GET    | `/api/roles/:id`                               |
+| PATCH  | `/api/roles/:id`                               |
+| POST   | `/api/roles/:id/permissions`                   |
+| DELETE | `/api/roles/:roleId/permissions/:permissionId` |
 
 ---
 
-🛡 Roles
+## 🗺 Roadmap
 
-Create Role
+* ✅ Authentication
+* ✅ JWT Authorization
+* ✅ Layered Architecture
+* ✅ Modular Architecture
+* ✅ Global Error Handling
+* ✅ RBAC System
+* ✅ Dynamic Roles & Permissions
+* ✅ User Management
+* ✅ Pagination & Filtering
+* ✅ Soft Delete & Restore
+* ✅ Role Management
+* ✅ Permission Assignment
 
-POST /api/roles
+### Upcoming
 
-Get All Roles
-
-GET /api/roles
-
-Get Role By Id
-
-GET /api/roles/:id
-
-Update Role
-
-PATCH /api/roles/:id
-
-Assign Permission To Role
-
-POST /api/roles/:id/permissions
-
-Remove Permission From Role
-
-DELETE /api/roles/:roleId/permissions/:permissionId
-
----
-
-📌 Roadmap
-
-- [x] Authentication System
-
-- [x] JWT Authorization
-
-- [x] Modular Architecture
-
-- [x] Layered Architecture
-
-- [x] Global Error Handling
-
-- [x] RBAC Authorization
-
-- [x] Dynamic Roles & Permissions
-
-- [x] User Management APIs
-
-- [x] Pagination & Filtering
-
-- [x] Soft Delete & Restore User System
-
-- [x] Role Management APIs
-
-- [x] Permission Assignment System
-
-- [x] Permission Revocation System
-
-- [ ] Assign Role To User
-
-- [ ] Remove Role From User
-
-- [ ] Soft Delete & Restore Roles
-
-- [ ] Refresh Token System
-
-- [ ] Audit Logs
-
-- [ ] Rate Limiting
-
-- [ ] API Documentation (Swagger)
-
-- [ ] Docker Support
-
-- [ ] File Upload System
-
-- [ ] Notification System
-
-- [ ] Product Module
-
-- [ ] Invoice Module
-
-- [ ] Employee Module
-
-- [ ] Unit & Integration Testing
+* ⏳ Assign Roles to Users
+* ⏳ Remove Roles from Users
+* ⏳ Refresh Tokens
+* ⏳ Audit Logs
+* ⏳ Rate Limiting
+* ⏳ Swagger Documentation
+* ⏳ Docker Support
+* ⏳ File Uploads
+* ⏳ Notification Module
+* ⏳ Product Module
+* ⏳ Employee Module
+* ⏳ Invoice Module
+* ⏳ Unit & Integration Tests
 
 ---
 
-🧠 Engineering Concepts Used
+## 💡 Engineering Concepts
 
-- Repository Pattern
-- Layered Architecture
-- Modular Architecture
-- RBAC (Role-Based Access Control)
-- ACL (Access Control List)
-- JWT Authentication
-- Soft Delete Architecture
-- Defensive Programming
-- Validation Layer Separation
-- Centralized Error Handling
-- Permission Driven Authorization
-- Enterprise Authorization Flow
-
----
-
-📄 License
-
-ISC
+* Repository Pattern
+* Service Layer Pattern
+* Layered Architecture
+* Modular Design
+* RBAC
+* ACL
+* JWT Authentication
+* Soft Delete Strategy
+* Defensive Programming
+* Validation Separation
+* Centralized Error Handling
 
 ---
 
-👨‍💻 Author
+## 👨‍💻 Author
 
-GitHub:
-https://github.com/amirrezavaladkhani
+**Amirreza Valadkhani**
+
+GitHub: **https://github.com/amirrezavaladkhani**
+
+---
+
+## 📄 License
+
+Released under the **ISC License**.
