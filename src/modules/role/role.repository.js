@@ -4,7 +4,7 @@ const findRoleById = async (id) => {
    return prisma.role.findUnique({
       where: {
          id,
-         isActive: true
+         // isActive: true
       },
       include: {
          permissions: {

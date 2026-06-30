@@ -24,7 +24,6 @@ router.get(
    roleController.getAll
 )
 
-//check
 router.get(
    '/:id',
    authMiddleware,
